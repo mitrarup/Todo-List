@@ -68,8 +68,12 @@ header {
     display: flex;
     gap: 0.75em;
 }
-
-.project {
+.projectContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.project{
     width: 15em;
     display: flex;
     justify-content: flex-start;
@@ -82,7 +86,16 @@ header {
     padding: 0.5em 1.25em;
 
 }
-
+.projectInput{
+    margin: 0.5em 0;
+    padding-left: 15px;
+    width: 15em;
+    height: 2em;
+    background-color: #0F0F13;
+    color: white;
+    font-size: 1em;
+    font-weight: bolder;
+}
 .project>div {
     width: 15px;
     height: 15px;
@@ -190,3 +203,64 @@ header {
     align-items: center;
     gap: 0.5em;
 }
+
+dialog{
+    justify-self: center;
+    align-self: center;
+    position: relative;
+    padding: 1.25rem;
+    width: 35rem;
+    min-height: 25rem;
+    background-color: #16161D;
+    backdrop-filter: blur(50px);
+    color: white;
+    font-size: 1em;
+    border: 1px solid black;
+    border-radius: 0.8rem;
+ }
+dialog div{
+    padding: 1.25rem;
+ }
+dialog>div{
+    display: flex;
+}
+dialog label{
+    font-size: 1.23em;
+}
+#myform input[type="text"],input[type="date"] {
+    margin-top: 7px;
+    width: 35em;
+    height: 2.5em;
+    padding: 0px 15px;
+    background-color: #1E1E28;
+    color: white ;
+    border: 1px solid #3c3f50;
+ }
+  select{
+    text-align: center;
+    margin-left: 1em;
+    width: 20em;
+    height: 2em;
+    font-size: 1em;
+    font-weight: bolder;
+    background-color: #16161D;
+    color: white;
+  }
+ #submit_form{
+    background-color: #38bdf8;
+    color: #16161D;
+    font-size: 1.125em;
+    font-weight: bolder;
+    width: 26em;
+    height: 3em;
+    border: 2px solid #252c54;
+ }
+ #cancel{
+    position: absolute;
+    right: 2.5em;
+    background-color: #16161D;
+    color: rgb(212, 208, 216);
+    font-weight: bolder;
+    border: none;
+    font-size: 1.2em;
+ }

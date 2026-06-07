@@ -15,6 +15,37 @@
         </button>
     </header>
     <div class="separate"></div>
+    <dialog id="my_dialog">
+        <div>
+            <h2>Add New Task</h2>
+            <button id="cancel">X</button>
+        </div>
+        <form id="myform">
+            <div>
+                <label for="title">Title:</label>
+                <p><input type="text" id="title" name="title" required></p>
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <p><input type="text" id="description" name="description" required></p>
+            </div>
+            <div>
+                <label for="duedate">Duedate:</label>
+                <p><input type="date" id="duedate" name="duedate" required></p>
+            </div>
+            <div id="select">
+                <label for="priority">Priority:</label>
+                <select name="priority" id="priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" id="submit_form">Add Todo</button>
+            </div>
+        </form>
+    </dialog>
     <div class="sidebar">
         <div class="headline">
             <h2>Tyson Todos</h2>
@@ -24,13 +55,18 @@
             <h1>+</h1>
             <h2>New Project</h2>
         </button>
-        <div class="project">
-            <div></div>
-            <h4>Default</h4>
+        <div class="projectContainer">
+            <div class="project" id="Default">
+                <div></div>
+                <h4>Default</h4>
+            </div>
+            <div class="project" id="Todo List">
+                <div></div>
+                <h4>Todo List</h4>
+            </div>
         </div>
-        <div class="project">
-            <div></div>
-            <h4>Todo List</h4>
+        <div class="projectInputContainer hidden">
+            <input type="text" class="projectInput" placeholder="New project...">
         </div>
     </div>
     <div class="container">
@@ -46,9 +82,9 @@
                     <span>10 JUN 2026</span>
                 </div>
                 <div class="todo_icons">
-                    <img  src="assets/todoItem/seeMore.svg" alt="See more icon">
-                    <img  src="assets/todoItem/edit.svg" alt="Edit icon">
-                    <img  src="assets/todoItem/delete.svg" alt="Delete icon">
+                    <img class="details_btn" src="assets/todoItem/seeMore.svg" alt="See more icon">
+                    <img class="edit_btn" src="assets/todoItem/edit.svg" alt="Edit icon">
+                    <img class="delete_btn" src="assets/todoItem/delete.svg" alt="Delete icon">
                 </div>
             </div>
             <div class="show hidden">
