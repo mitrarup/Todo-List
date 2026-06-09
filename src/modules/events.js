@@ -2,7 +2,7 @@ import { state } from "./state.js";
 import { projectManager } from "./project.js";
 import { todoManager } from "./todo.js";
 import { renderProjects,renderTodos } from "./renderDisplay.js";
-
+import { format,parseISO } from "date-fns";
 
 const sidebar = document.querySelector(".sidebar");
 const projectBtn = document.querySelector(".project_btn")
@@ -62,8 +62,8 @@ myForm.addEventListener("submit", function (event) {
     const priority = myForm.querySelector('[name="priority"]').value;
     const duedate = myForm.querySelector('[name="duedate"]').value;
 
-
-    todoManager.createTodo( title,description,duedate,priority);
+    const formatedDueDate = format( parseISO(duedate), "dd MMM yyyy");
+    todoManager.createTodo( title,description,formatedDueDate,priority);
     dialog.close();
     myForm.reset();
     renderTodos();
