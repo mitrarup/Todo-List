@@ -14,18 +14,20 @@ class Todo {
         this.checklist = !this.checklist;
     }
  }
-export const todoManager = (  ()=> {
-    //get the current project through state.selectedProjectId from state.js
-    const current_project = state.projects.find(project => project.id == state.selectedProjectId);
-
-    function createTodo(title,description,duedate,priority){
+ export const todoManager = (  ()=> {
+    
+     function createTodo(title,description,duedate,priority){
+        //get the current project through state.selectedProjectId from state.js
+        const current_project = state.projects.find(project => project.id == state.selectedProjectId);
         const newtodo = new Todo(title,description,duedate,priority);
+        console.log(current_project);
         current_project.todos.push(newtodo);
     }
-
+    
+    
     function deleteTodo(uid){
-
-      current_project.todos =  current_project.todos.filter(todo => todo.id != uid);
+        const current_project = state.projects.find(project => project.id == state.selectedProjectId);
+        current_project.todos =  current_project.todos.filter(todo => todo.id != uid);
     }
 
     return { createTodo,deleteTodo };

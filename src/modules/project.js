@@ -12,7 +12,7 @@ export const projectManager = ( ()=> {
     const project = new Project(name);
     state.projects.push(project);
 
-    return project.id;
+    state.selectedProjectId =  project.id;
   }
   function deleteProject(uid){
     const index = state.projects.findIndex(project => project.id == uid);
@@ -24,4 +24,4 @@ export const projectManager = ( ()=> {
 })()
 
 // Default project
-state.selectedProjectId = projectManager.createProject("Default");
+projectManager.createProject("Default");

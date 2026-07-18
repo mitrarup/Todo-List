@@ -28,7 +28,7 @@ projectInputContainer.addEventListener("keydown", (e) => {
   if (e.key === "Enter" &&
       projectInput.value.trim() !== "") {
 
-    state.selectedProjectId = projectManager.createProject( projectInput.value );
+    projectManager.createProject( projectInput.value );
 
     renderProjects();
     renderTodos();

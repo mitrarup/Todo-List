@@ -1,4 +1,4 @@
 export const state = {
   projects: [],
-  selectedProjectId: "Default",
+  selectedProjectId: null,
 };
