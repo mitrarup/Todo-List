@@ -71,13 +71,17 @@ myForm.addEventListener("submit", function (event) {
 
 
 container.addEventListener("click", (e)=>{
-    // if( e.target.classList.contains("details_btn")){
-        
-    // }
-    // if( e.target.classList.contains("edit_btn")){
+    if( e.target.classList.contains("details_btn")){
+        // find the todo from dom
+        let parent = e.target.closest(".todo");
+        // find that todo object  
+        let current_project = state.projects.find(project => project.id == state.selectedProjectId);
+        let current_todo = current_project.todos.find(todo => todo.id == parent.id);
+        //change hidden status
+        current_todo.togglehidden();
+        renderTodos();
 
-
-    // }
+    }
     // delete todo
     if( e.target.classList.contains("delete_btn")){
         // get the todo

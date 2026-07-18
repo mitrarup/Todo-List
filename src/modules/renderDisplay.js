@@ -74,9 +74,10 @@ export function renderTodos( uid = state.selectedProjectId ){
 
         div = document.createElement("div");
         div.classList.add("show");
-        div.classList.add("hidden");
+        if( element.hidden )
+            div.classList.add("hidden");
         temp = document.createElement("h4");
-        temp.innerText = "Description :";
+        temp.innerText = "Description: ";
         div.appendChild( temp );
         temp = document.createElement("h5");
         temp.innerText = element.description;

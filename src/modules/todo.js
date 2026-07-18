@@ -9,6 +9,10 @@ class Todo {
       this.duedate = duedate;
       this.priority = priority;
       this.checklist = false;
+      this.hidden = true;
+    }
+    togglehidden(){
+        this.hidden= !this.hidden;
     }
     toggleStatus() {
         this.checklist = !this.checklist;
