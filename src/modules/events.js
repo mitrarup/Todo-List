@@ -2,7 +2,6 @@ import { state } from "./state.js";
 import { projectManager } from "./project.js";
 import { todoManager } from "./todo.js";
 import { renderProjects,renderTodos } from "./renderDisplay.js";
-import { format,parseISO } from "date-fns";
 
 const sidebar = document.querySelector(".sidebar");
 const projectBtn = document.querySelector(".project_btn")
@@ -45,7 +44,7 @@ const addTodoBtn = document.querySelector(".todo_btn");
 const cancel = document.getElementById("cancel");
 const dialog = document.getElementById("my_dialog");
 const myForm = document.getElementById("myform");
-
+let todoid ;
 
 addTodoBtn.addEventListener("click", () => {
     dialog.showModal();
@@ -62,10 +61,30 @@ myForm.addEventListener("submit", function (event) {
     const priority = myForm.querySelector('[name="priority"]').value;
     const duedate = myForm.querySelector('[name="duedate"]').value;
 
-    const formatedDueDate = format( parseISO(duedate), "dd MMM yyyy");
-    todoManager.createTodo( title,description,formatedDueDate,priority);
+    todoManager.createTodo( title,description,duedate,priority);
     dialog.close();
     myForm.reset();
+    renderTodos();
+});
+const edit_cancel = document.getElementById("edit_cancel");
+const edit_dialog = document.getElementById("my_edit_dialog");
+const edit_myForm = document.getElementById("myedit_form");
+edit_cancel.addEventListener("click", () => {
+    edit_dialog.close();
+})
+
+edit_myForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    //mapping the form input values
+    const title = edit_myForm.querySelector('[name="edit_title"]').value;
+    const description = edit_myForm.querySelector('[name="edit_description"]').value;
+    const priority = edit_myForm.querySelector('[name="edit_priority"]').value;
+    const duedate = edit_myForm.querySelector('[name="edit_duedate"]').value;
+
+    
+    todoManager.editTodo( todoid,title,description,duedate,priority);
+    edit_dialog.close();
+    edit_myForm.reset();
     renderTodos();
 });
 
@@ -81,6 +100,22 @@ container.addEventListener("click", (e)=>{
         current_todo.togglehidden();
         renderTodos();
 
+    }
+    //edit button
+    if( e.target.classList.contains("edit_btn")){
+
+        // find the todo from dom
+        let parent = e.target.closest(".todo");
+        todoid = parent.id;
+        // find that todo object  
+        let current_project = state.projects.find(project => project.id == state.selectedProjectId);
+        let current_todo = current_project.todos.find(todo => todo.id == parent.id);
+        // now assign the values in form elements
+        edit_myForm.querySelector('[name="edit_title"]').value = current_todo.title;
+        edit_myForm.querySelector('[name="edit_description"]').value = current_todo.description;
+        edit_myForm.querySelector('[name="edit_priority"]').value = current_todo.priority;
+        edit_myForm.querySelector('[name="edit_duedate"]').value = current_todo.duedate;
+        edit_dialog.showModal();
     }
     // delete todo
     if( e.target.classList.contains("delete_btn")){

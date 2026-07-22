@@ -28,16 +28,23 @@ class Todo {
         current_project.todos.push(newtodo);
     }
     
-    
+    function editTodo( todoid,title,description,duedate,priority){
+        let current_project = state.projects.find(project => project.id == state.selectedProjectId);
+        let current_todo = current_project.todos.find(todo => todo.id == todoid );
+        current_todo.title = title;
+        current_todo.description = description;
+        current_todo.duedate = duedate;
+        current_todo.priority = priority;
+    }
     function deleteTodo(uid){
         const current_project = state.projects.find(project => project.id == state.selectedProjectId);
         current_project.todos =  current_project.todos.filter(todo => todo.id != uid);
     }
 
-    return { createTodo,deleteTodo };
+    return { createTodo,editTodo,deleteTodo };
 })()
 // creating some todos
-todoManager.createTodo("Stay Consistent","Have to stay consisted","22 MAY 2026","high");
-todoManager.createTodo("DSA Lecture & Practice","Have to remain consistent","1st JUN 2026","medium");
-todoManager.createTodo("Attend College Lectures","Need to increase the Attendence","17 JULY 2026","low");
+todoManager.createTodo("Stay Consistent","Have to stay consisted","2026-05-22","high");
+todoManager.createTodo("DSA Lecture & Practice","Have to remain consistent","2026-06-08","medium");
+todoManager.createTodo("Attend College Lectures","Need to increase the Attendence","2026-07-22","low");
 

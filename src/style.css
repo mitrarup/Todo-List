@@ -229,6 +229,7 @@ dialog>div{
 dialog label{
     font-size: 1.23em;
 }
+#myedit_form input[type="text"],input[type="date"],
 #myform input[type="text"],input[type="date"] {
     margin-top: 7px;
     width: 35em;
@@ -248,7 +249,8 @@ dialog label{
     background-color: #16161D;
     color: white;
   }
- #submit_form{
+ #submit_form,
+ #submit_edit_form{
     background-color: #38bdf8;
     color: #16161D;
     font-size: 1.125em;
@@ -257,7 +259,7 @@ dialog label{
     height: 3em;
     border: 2px solid #252c54;
  }
- #cancel{
+ #edit_cancel, #cancel{
     position: absolute;
     right: 2.5em;
     background-color: #16161D;

@@ -46,6 +46,37 @@
             </div>
         </form>
     </dialog>
+    <dialog id="my_edit_dialog">
+        <div>
+            <h2>Add New Task</h2>
+            <button id="edit_cancel">X</button>
+        </div>
+        <form id="myedit_form">
+            <div>
+                <label for="edit_title">Title:</label>
+                <p><input type="text" id="edit_title" name="edit_title" required></p>
+            </div>
+            <div>
+                <label for="edit_description">Description:</label>
+                <p><input type="text" id="edit_description" name="edit_description" required></p>
+            </div>
+            <div>
+                <label for="edit_duedate">Duedate:</label>
+                <p><input type="date" id="edit_duedate" name="edit_duedate" required></p>
+            </div>
+            <div id="select">
+                <label for="priority">Priority:</label>
+                <select name="edit_priority" id="edit_priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" id="submit_edit_form">Add Todo</button>
+            </div>
+        </form>
+    </dialog>
     <div class="sidebar">
         <div class="headline">
             <h2>Tyson Todos</h2>

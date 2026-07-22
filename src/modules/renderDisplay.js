@@ -3,6 +3,7 @@ import calenderImage from "../assets/todoItem/calendar.svg";
 import deleteImage from "../assets/todoItem/delete.svg";
 import editImage from "../assets/todoItem/edit.svg";
 import seeMoreImage from "../assets/todoItem/seeMore.svg";
+import { format,parseISO } from "date-fns";
 
 const projectContainer = document.querySelector(".projectContainer");
 const container = document.querySelector(".container");
@@ -47,7 +48,10 @@ export function renderTodos( uid = state.selectedProjectId ){
         temp.alt="calendar icon";
         div1.appendChild( temp );
         temp = document.createElement("span");
-        temp.innerText= element.duedate ;
+
+        const formatedDueDate = format( parseISO(element.duedate), "dd MMM yyyy");
+ 
+        temp.innerText= formatedDueDate;
         div1.appendChild( temp );
         div.appendChild( div1 );
         
