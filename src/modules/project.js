@@ -8,11 +8,15 @@ class Project{
   }
 }
 export const projectManager = ( ()=> {
-  function createProject(name){
-    const project = new Project(name);
+  function createProject(name, uid = null){
+    const project = new Project(name,uid);
     state.projects.push(project);
 
     state.selectedProjectId =  project.id;
+  }
+  function createLocalProject(name, uid = null){
+    const project = new Project(name,uid);
+    return project;
   }
   function deleteProject(uid){
     const index = state.projects.findIndex(project => project.id == uid);
@@ -20,8 +24,6 @@ export const projectManager = ( ()=> {
         state.projects.splice(index,1);
     }
   }
-  return { createProject,deleteProject };
+  return { createProject,createLocalProject,deleteProject };
 })()
 
-// Default project
-projectManager.createProject("Default");

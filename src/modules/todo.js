@@ -1,5 +1,4 @@
 import { state } from "./state.js";
-import "./project.js"
 
 class Todo {
   constructor( data ){
@@ -20,14 +19,18 @@ class Todo {
  }
  export const todoManager = (  ()=> {
     
-     function createTodo(title,description,duedate,priority){
+     function createTodo(data){
         //get the current project through state.selectedProjectId from state.js
         const current_project = state.projects.find(project => project.id == state.selectedProjectId);
-        const newtodo = new Todo(title,description,duedate,priority);
+        const newtodo = new Todo(data);
 
         current_project.todos.push(newtodo);
     }
-    
+    function createLocalTodo(data){
+        const newtodo = new Todo(data);
+
+        return newtodo;
+    }
     function editTodo( todoid,title,description,duedate,priority){
         let current_project = state.projects.find(project => project.id == state.selectedProjectId);
         let current_todo = current_project.todos.find(todo => todo.id == todoid );
@@ -41,5 +44,5 @@ class Todo {
         current_project.todos =  current_project.todos.filter(todo => todo.id != uid);
     }
 
-    return { createTodo,editTodo,deleteTodo };
+    return { createTodo,createLocalTodo,editTodo,deleteTodo };
 })()

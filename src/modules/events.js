@@ -2,6 +2,7 @@ import { state } from "./state.js";
 import { projectManager } from "./project.js";
 import { todoManager } from "./todo.js";
 import { renderProjects,renderTodos } from "./renderDisplay.js";
+import { savestate } from "./stroage.js";
 
 const sidebar = document.querySelector(".sidebar");
 const projectBtn = document.querySelector(".project_btn")
@@ -28,7 +29,7 @@ projectInputContainer.addEventListener("keydown", (e) => {
       projectInput.value.trim() !== "") {
 
     projectManager.createProject( projectInput.value );
-
+    savestate();
     renderProjects();
     renderTodos();
     projectInput.value = "";
@@ -67,6 +68,7 @@ myForm.addEventListener("submit", function (event) {
 
     dialog.close();
     myForm.reset();
+    savestate();
     renderTodos();
 });
 const edit_cancel = document.getElementById("edit_cancel");
@@ -88,6 +90,7 @@ edit_myForm.addEventListener("submit", function (event) {
     todoManager.editTodo( todoid,title,description,duedate,priority);
     edit_dialog.close();
     edit_myForm.reset();
+    savestate();
     renderTodos();
 });
 
@@ -127,6 +130,7 @@ container.addEventListener("click", (e)=>{
         // delete the todo
         todoManager.deleteTodo( parent.id );
         // update UI
+        savestate();
         renderTodos();
     }
 })
