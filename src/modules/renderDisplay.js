@@ -8,8 +8,8 @@ import { format,parseISO } from "date-fns";
 const projectContainer = document.querySelector(".projectContainer");
 const container = document.querySelector(".container");
 
-export function renderTodos( uid = state.selectedProjectId ){
-    const project = state.projects.find( project => project.id == uid);
+export function renderTodos( ){
+    const project = state.projects.find( project => project.id == state.selectedProjectId);
     if( project != null){
         // clean the page
         container.innerHTML= "";

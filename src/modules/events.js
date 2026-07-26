@@ -55,13 +55,16 @@ cancel.addEventListener("click", () => {
 
 myForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    //mapping the form input values
-    const title = myForm.querySelector('[name="title"]').value;
-    const description = myForm.querySelector('[name="description"]').value;
-    const priority = myForm.querySelector('[name="priority"]').value;
-    const duedate = myForm.querySelector('[name="duedate"]').value;
 
-    todoManager.createTodo( title,description,duedate,priority);
+    const data = {
+        title : myForm.querySelector('[name="title"]').value,
+        description : myForm.querySelector('[name="description"]').value,
+        priority : myForm.querySelector('[name="priority"]').value,
+        duedate : myForm.querySelector('[name="duedate"]').value,
+    }
+
+    todoManager.createTodo( data);
+
     dialog.close();
     myForm.reset();
     renderTodos();

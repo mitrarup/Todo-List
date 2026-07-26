@@ -1,8 +1,8 @@
 import { state } from "./state.js";
 
 class Project{
-  constructor(name){
-    this.id = crypto.randomUUID();
+  constructor(name , uid = null){
+    this.id = uid ?? crypto.randomUUID();
     this.name = name;
     this.todos = [];
   }

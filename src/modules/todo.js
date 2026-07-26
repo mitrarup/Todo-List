@@ -2,14 +2,14 @@ import { state } from "./state.js";
 import "./project.js"
 
 class Todo {
-  constructor(title,description,duedate,priority){
-      this.id = crypto.randomUUID();
-      this.title = title;
-      this.description = description;
-      this.duedate = duedate;
-      this.priority = priority;
-      this.checklist = false;
-      this.hidden = true;
+  constructor( data ){
+      this.id = data.id ?? crypto.randomUUID();
+      this.title = data.title;
+      this.description = data.description;
+      this.duedate = data.duedate;
+      this.priority = data.priority;
+      this.checklist =data.checklist ?? false;
+      this.hidden = data.hidden ??  true;
     }
     togglehidden(){
         this.hidden= !this.hidden;
@@ -24,7 +24,7 @@ class Todo {
         //get the current project through state.selectedProjectId from state.js
         const current_project = state.projects.find(project => project.id == state.selectedProjectId);
         const newtodo = new Todo(title,description,duedate,priority);
-        console.log(current_project);
+
         current_project.todos.push(newtodo);
     }
     
@@ -43,8 +43,3 @@ class Todo {
 
     return { createTodo,editTodo,deleteTodo };
 })()
-// creating some todos
-todoManager.createTodo("Stay Consistent","Have to stay consisted","2026-05-22","high");
-todoManager.createTodo("DSA Lecture & Practice","Have to remain consistent","2026-06-08","medium");
-todoManager.createTodo("Attend College Lectures","Need to increase the Attendence","2026-07-22","low");
-
