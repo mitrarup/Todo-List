@@ -18,7 +18,7 @@ export const projectManager = ( ()=> {
     const project = new Project(name,uid);
     return project;
   }
-  function deleteProject(uid){
+  function deleteProject(uid = state.selectedProjectId){
     const index = state.projects.findIndex(project => project.id == uid);
     if(index !== -1){
         state.projects.splice(index,1);

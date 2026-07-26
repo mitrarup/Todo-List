@@ -12,10 +12,28 @@ const container = document.querySelector(".container");
 
 sidebar.addEventListener("click", (e)=>{
     // if any project
-    if( e.target.classList.contains("project")){
-        state.selectedProjectId = e.target.id ;
-        renderTodos();
+    let button = e.target.closest(".removebtn")
+    if( button){
+        let current_project = state.projects.find(project => project.id == state.selectedProjectId);
+        let sure = confirm(`Do you want to Delete "${current_project.name}" Project ?..`);
+        
+        if(sure){
+            projectManager.deleteProject(current_project.id);
+            state.selectedProjectId = state.projects[0].id;
+            savestate();
+            renderProjects();
+            renderTodos();
+        }
+        return;
     }
+    let current_project = e.target.closest(".project");
+    if( current_project ){
+        state.selectedProjectId = current_project.id ;
+        renderProjects();
+        renderTodos();
+        return;
+    }
+    
 })
 // if add project button is clicked
 projectBtn.addEventListener("click", (e)=>{

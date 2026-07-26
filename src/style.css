@@ -84,7 +84,7 @@ header {
     border-bottom: 1px solid #38bdf8;
     border-radius: 0.5rem;
     padding: 0.5em 1.25em;
-
+    position: relative;
 }
 .projectInput{
     margin: 0.5em 0;
@@ -100,10 +100,23 @@ header {
     width: 15px;
     height: 15px;
     background-color: #38bdf8;
+    background-color: #38bdf8;
     border: 1px solid #38bdf8;
     border-radius: 1em;
 }
-
+.project > .removebtn{
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    width: 1.25em;
+    height: 1.25em;
+    border: 1px solid #0F0F13;
+    background-color: #e76153;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .container {
     margin: 1em;
     grid-column: 2/4;
