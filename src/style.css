@@ -123,6 +123,7 @@ header {
     grid-row: 2/3;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .todo {

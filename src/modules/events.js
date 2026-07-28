@@ -130,7 +130,8 @@ container.addEventListener("click", (e)=>{
 
         // find the todo from dom
         let parent = e.target.closest(".todo");
-        todoid = parent.id;
+        // todoid required to call editTodo from the submitted form
+        todoid = parent.id; 
         // find that todo object  
         let current_project = state.projects.find(project => project.id == state.selectedProjectId);
         let current_todo = current_project.todos.find(todo => todo.id == parent.id);
@@ -150,5 +151,15 @@ container.addEventListener("click", (e)=>{
         // update UI
         savestate();
         renderTodos();
+    }
+    if( e.target.classList.contains("task_check")){
+        // get the todo
+        let parent = e.target.closest(".todo");
+
+        let current_project = state.projects.find(project => project.id == state.selectedProjectId);
+        let current_todo = current_project.todos.find(todo => todo.id == parent.id);
+        current_todo.toggleStatus();
+        
+        savestate();
     }
 })

@@ -30,9 +30,7 @@ export function renderTodos( ){
             let myinput = document.createElement("input");
             myinput.type= "checkbox";
             myinput.classList.add("task_check");
-            // CHECK IF CHECKBOX CHECKED OR NOT
-            // if( element.checklist == true){
-            // }
+            myinput.checked = element.checklist;
             div.appendChild( myinput );
             let temp = document.createElement("h3");
             temp.innerHTML = element.title ;
@@ -100,6 +98,8 @@ export function renderTodos( ){
 }
 export function renderProjects(){
     projectContainer.innerHTML = "";
+    const projectInputContainer = document.querySelector(".projectInputContainer");
+    projectInputContainer.classList.add("hidden");
     state.projects.forEach( (project)=>{
         let div = document.createElement("div");
         div.id = project.id ;
