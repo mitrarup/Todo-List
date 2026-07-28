@@ -146,11 +146,18 @@ container.addEventListener("click", (e)=>{
     if( e.target.classList.contains("delete_btn")){
         // get the todo
         let parent = e.target.closest(".todo");
-        // delete the todo
-        todoManager.deleteTodo( parent.id );
-        // update UI
-        savestate();
-        renderTodos();
+        // find that todo object  
+        let current_project = state.projects.find(project => project.id == state.selectedProjectId);
+        let current_todo = current_project.todos.find(todo => todo.id == parent.id);
+        let sure = confirm(`Do you want to Delete "${current_todo.title}" Todo ?..`);
+        
+        if(sure){
+            // delete the todo
+            todoManager.deleteTodo( parent.id );
+            // update UI
+            savestate();
+            renderTodos();
+        }
     }
     if( e.target.classList.contains("task_check")){
         // get the todo
