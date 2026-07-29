@@ -243,8 +243,8 @@ dialog>div{
 dialog label{
     font-size: 1.23em;
 }
-#myedit_form input[type="text"],input[type="date"],
-#myform input[type="text"],input[type="date"] {
+#myedit_form input:not([type="submit"]),
+#myform input:not([type="submit"]){
     margin-top: 7px;
     width: 35em;
     height: 2.5em;
